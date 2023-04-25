@@ -18,6 +18,8 @@
            eviction="LRU"
            flushInterval="12000"
            readOnly="false"/>
+    <!--不同mapper引入同一缓存-->
+<!--    <cache-ref namespace=""/>-->
 
     <!--对于公共的sql，可以通过sql抽取 include引入-->
     <sql id="selectCommon">select * from student</sql>
