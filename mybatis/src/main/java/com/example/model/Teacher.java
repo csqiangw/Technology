@@ -1,8 +1,9 @@
 package com.example.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Teacher {
+public class Teacher implements Serializable {
 
     private Integer id;
     private String name;
