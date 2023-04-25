@@ -11,6 +11,8 @@
     eviction缓存淘汰策略
     flushInterval缓存定时清空策略
     readOnly对象是否只读，就不存在并发干扰，性能高，若是false，会在写入的时候序列化，读的时候反序列化，所以对象要支持序列化，效率慢了，但更安全-->
+    <!--如果直接配置，将作用域整个mapper-->
+    <!--如果某些statement不想用缓存，则可以使用useCache=false-->
     <cache type="org.apache.ibatis.cache.impl.PerpetualCache"
            size="1024"
            eviction="LRU"
@@ -21,7 +23,7 @@
     <sql id="selectCommon">select * from student</sql>
 
     <!--查询全部，分页测试-->
-    <select id="selectAll" resultType="Student">
+    <select id="selectAll" resultType="Student" useCache="false">
         <include refid="selectCommon"/>
     </select>
 
