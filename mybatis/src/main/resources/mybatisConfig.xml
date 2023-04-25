@@ -6,7 +6,12 @@
 
     <!--引入数据库配置文件-->
     <properties resource="jdbc.properties"/>
-        
+
+    <!--配置log4j-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
     <!--起别名-->
     <typeAliases>
         <package name="com.example.model"/>
