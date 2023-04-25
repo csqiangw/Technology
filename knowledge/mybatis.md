@@ -79,7 +79,7 @@ password=xxx
 
 2.操作步骤
 
-https://github.com/csqiangw/Technology/blob/master/knowledge/image/mybatis1.png
+[!image](https://github.com/csqiangw/Technology/blob/master/knowledge/image/mybatis1.png)
 
 需要注意映射关系
 
