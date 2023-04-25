@@ -4,6 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--如果使用获取mapper的方式，这里要与接口mapper一一对应-->
 <mapper namespace="com.example.mapper.StudentMapper">
+
+    <!--二级缓存配置
+    type cache接口的实现类
+    size定义缓存管理的数量，也就是key的数量
+    eviction缓存淘汰策略
+    flushInterval缓存定时清空策略
+    readOnly对象是否只读，就不存在并发干扰，性能高，若是false，会在写入的时候序列化，读的时候反序列化，所以对象要支持序列化，效率慢了，但更安全-->
+    <cache type="org.apache.ibatis.cache.impl.PerpetualCache"
+           size="1024"
+           eviction="LRU"
+           flushInterval="12000"
+           readOnly="false"/>
+
     <!--对于公共的sql，可以通过sql抽取 include引入-->
     <sql id="selectCommon">select * from student</sql>
 

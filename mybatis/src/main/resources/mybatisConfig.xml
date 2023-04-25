@@ -10,6 +10,8 @@
     <!--配置log4j-->
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <!--配置二级缓存 true代表开启-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!--起别名-->
