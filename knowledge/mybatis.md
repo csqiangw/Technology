@@ -79,7 +79,7 @@ password=xxx
 
 2.操作步骤
 
-![截屏2023-04-25 13.05.56](/Users/qiangw/Desktop/截屏2023-04-25 13.05.56.png)
+https://github.com/csqiangw/Technology/blob/master/knowledge/image/mybatis1.png
 
 需要注意映射关系
 
