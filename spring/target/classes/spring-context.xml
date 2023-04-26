@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--声明bean，通过id/name进行获取，class代表需要被加载的类
+    scope:singleton代表一个单例 prototype代表非单例
+    当声明为singleton时，它的生命周期全程由spring管理，而生命为prototype时，它的销毁由gc管理
+
+    init-method:指定对象在创建时，需要执行的方法
+    destroy-method:指定对象在销毁时，需要执行的方法
+
+    对象的销毁场景，如Spring容器关闭等-->
+    <bean id="userservice" name="us" class="com.example.service.Impl.UserServiceImpl" scope="prototype"
+          init-method="initMethod" destroy-method="destoryMethod">
+
+        <!--使用set注入方式进行注入，要求必须提供set方法-->
+        <!--用property来声明属性，这个被注入的对象作为外层bean的属性-->
+        <!--name则要与外层bean中的属性名相同
+        若是一个值，则使用value进行注入
+        若是引用类型，则用ref引用对应的bean-->
+        <property name="userDao"  ref="userdao"/> <!--value=""-->
+    </bean>
+
+    <bean id="userdao" name="ud" class="com.example.dao.Impl.UserDaoImpl"/>
+
+</beans>
