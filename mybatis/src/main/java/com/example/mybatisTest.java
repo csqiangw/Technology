@@ -52,8 +52,8 @@ public class mybatisTest {
     public void testSelectById(){
         //可以通过session提供的一些方法，也可以通过获取自定义的mapper来调用方法
 //        session.selectOne("StudentMapper.selectById",1);
-        Student student = studentMapper.selectById(1);
-        System.out.println(student);
+        Student student = studentMapper.selectById(1022);
+        System.out.println(student.getAge());
     }
 
     @Test

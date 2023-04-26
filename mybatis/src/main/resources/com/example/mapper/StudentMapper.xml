@@ -78,14 +78,28 @@
     <resultMap id="oneToOne" type="Person">
         <id column="pid" property="id"/>
         <result column="pname" property="name"/>
-        <association property="card" javaType="Card">
-            <id column="cid" property="id"/>
-            <result column="ccno" property="cardNo"/>
-        </association>
+        <!--一次查询，嵌套结果-->
+<!--        <association property="card" javaType="Card">-->
+<!--            <id column="cid" property="id"/>-->
+<!--            <result column="ccno" property="cardNo"/>-->
+<!--        </association>-->
+        <!--嵌套查询-->
+        <!--这面的column就是外层查询查出的结果，内存查询想使用的话，就用这里的名字即可-->
+        <association property="card" javaType="Card" select="selectByCid" column="cid"/>
     </resultMap>
 
     <select id="selectPersonById" parameterType="int" resultMap="oneToOne">
         select p.id pid,p.name pname,c.id cid,c.card_no ccno from person p,card c where p.cid = c.id and p.id = #{id};
+    </select>
+
+    <!--若用嵌套查询，对于子查询，一定要写resultMap-->
+    <resultMap id="byCid" type="Card">
+        <id property="id" column="id"/>
+        <result property="cardNo" column="card_no"/>
+    </resultMap>
+
+    <select id="selectByCid" parameterType="int" resultMap="byCid">
+        select * from card where id = #{cid}
     </select>
 
     <!--为什么会有resultMap的配置，因为多表查询字段的问题-->
@@ -112,6 +126,7 @@
         from teacher t,student s
         where t.id = s.teacher_id and t.id = #{id};
     </select>
+
 
 
 </mapper>
